@@ -11,7 +11,9 @@
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "db:studio": "prisma studio",
-    "setup": "prisma generate && prisma db push && tsx prisma/seed.ts"
+    "setup": "prisma generate && prisma db push && tsx prisma/seed.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -49,6 +51,7 @@
     "prisma": "^6.19.3",
     "tailwindcss": "^4.3.5",
     "tsx": "^4.23.15",
-    "typescript": "5.9"
+    "typescript": "5.9",
+    "vitest": "^5.1.0"
   }
 }

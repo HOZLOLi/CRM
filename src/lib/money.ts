@@ -197,8 +197,10 @@ export function formatMoney(value: MoneyInput, options: FormatOptions = {}): str
   } else {
     const fixed = abs.toFixed(scale);
     const [intPart, fracPart] = fixed.split(".");
-    const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, "٬");
-    body = fracPart ? `${grouped}٫${fracPart}` : grouped;
+    const groupSep = persian ? "٬" : ",";
+    const decimalSep = persian ? "٫" : ".";
+    const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, groupSep);
+    body = fracPart ? `${grouped}${decimalSep}${fracPart}` : grouped;
     if (persian) body = toPersianDigits(body);
   }
 
@@ -220,7 +222,10 @@ export function compactNumber(value: MoneyInput, persian = true): string {
   for (const [threshold, label] of units) {
     if (n.greaterThanOrEqualTo(threshold)) {
       const scaled = n.dividedBy(threshold).toDecimalPlaces(1, Decimal.ROUND_HALF_UP);
-      const text = scaled.toFixed(1).replace(/\.0$/, "").replace(".", "٫");
+      const text = scaled
+        .toFixed(1)
+        .replace(/\.0$/, "")
+        .replace(".", persian ? "٫" : ".");
       return `${persian ? toPersianDigits(text) : text} ${label}`;
     }
   }
