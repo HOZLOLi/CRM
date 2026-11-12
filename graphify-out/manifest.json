@@ -252,10 +252,10 @@
     "semantic_hash": "4e9e0d45df58dbdbe0df75d178405b11"
   },
   "src/components/features/companies-view.tsx": {
-    "mtime": 1794467326.6788926,
-    "seen": 1794471145.0054061,
-    "ast_hash": "2fbdfae8d71130e4fd54ee7ee8827fff",
-    "semantic_hash": "2fbdfae8d71130e4fd54ee7ee8827fff"
+    "mtime": 1794473767.7432592,
+    "seen": 1794473879.7706444,
+    "ast_hash": "d537a6e6ad8bc19670b55d6a71d40922",
+    "semantic_hash": ""
   },
   "src/components/features/contacts-view.tsx": {
     "mtime": 1794467326.65571,
@@ -657,6 +657,18 @@
     "mtime": 1794473137.9298942,
     "seen": 1794473707.1717038,
     "ast_hash": "4061faeccb75bcb5d9e99e9768b77043",
+    "semantic_hash": ""
+  },
+  "src/app/(app)/companies/[id]/page.tsx": {
+    "mtime": 1794473857.9430914,
+    "seen": 1794473879.7706444,
+    "ast_hash": "872451e30e1c60502f0860f62c81038a",
+    "semantic_hash": ""
+  },
+  "src/components/features/temperature-form.tsx": {
+    "mtime": 1794473725.669099,
+    "seen": 1794473879.7706444,
+    "ast_hash": "1eaac1e1ce4feec165efc58d5f061aa2",
     "semantic_hash": ""
   },
   "package-lock.json": {

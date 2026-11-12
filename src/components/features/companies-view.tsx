@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { ResourceTable, type ColumnDef, type FieldDef } from "./resource-table";
 import { Badge } from "@/components/ui/badge";
 
@@ -40,12 +41,12 @@ export function CompaniesView({ rows }: { rows: CompanyRow[] }) {
       key: "name",
       label: "شرکت",
       render: (row) => (
-        <div className="min-w-0">
-          <p className="truncate font-medium text-ink">{row.name}</p>
+        <Link href={`/companies/${row.id}`} className="group block min-w-0">
+          <p className="truncate font-medium text-ink group-hover:text-turquoise">{row.name}</p>
           <p dir="ltr" className="truncate text-left text-[11.5px] text-ink-faint">
             {row.domain ?? "—"}
           </p>
-        </div>
+        </Link>
       ),
     },
     {
