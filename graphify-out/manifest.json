@@ -12,15 +12,15 @@
     "semantic_hash": "0affed86ef208cf872f7d1e8ba5ca629"
   },
   "next.config.mjs": {
-    "mtime": 1794467080.3310504,
-    "seen": 1794471145.004891,
-    "ast_hash": "637f33c2bbd36d5f528b4f29399c723b",
-    "semantic_hash": "637f33c2bbd36d5f528b4f29399c723b"
+    "mtime": 1794475071.7726371,
+    "seen": 1794477526.227747,
+    "ast_hash": "f116edb11349ecf6de296665a4e3fc75",
+    "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1794471402.5165448,
-    "seen": 1794471437.1601014,
-    "ast_hash": "1fc6819eb68391b56285bc1cb1dc6eaf",
+    "mtime": 1794475287.8558836,
+    "seen": 1794477526.227747,
+    "ast_hash": "26b75fcc0215ad7bb3d31f5f33e55c4d",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -492,9 +492,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794472099.1375303,
-    "seen": 1794472516.4502943,
-    "ast_hash": "6ad328cb55443a49b4e9f8a7b87802a7",
+    "mtime": 1794477513.723533,
+    "seen": 1794477526.227747,
+    "ast_hash": "a2a7cc557a5cb5d18051fdf702ee7760",
     "semantic_hash": ""
   },
   "docs/CONCEPT.md": {
@@ -731,10 +731,52 @@
     "ast_hash": "1e563e35f19fcafdea1823fe9db39a53",
     "semantic_hash": ""
   },
+  "desktop/main.js": {
+    "mtime": 1794476943.3065658,
+    "seen": 1794477526.227747,
+    "ast_hash": "e513705e8a78ee1488ec287ee935430e",
+    "semantic_hash": ""
+  },
+  "desktop/preload.js": {
+    "mtime": 1794475232.9886978,
+    "seen": 1794477526.227747,
+    "ast_hash": "debec27903ab30f8d7232c013f3fd30e",
+    "semantic_hash": ""
+  },
+  "electron-builder.yml": {
+    "mtime": 1794476022.319453,
+    "seen": 1794477526.227747,
+    "ast_hash": "ace4048078e03bc449c31680cec012b6",
+    "semantic_hash": ""
+  },
+  "scripts/build-base-db.mjs": {
+    "mtime": 1794475170.294377,
+    "seen": 1794477526.227747,
+    "ast_hash": "378e85f3d817102b800ffe36c626e9bb",
+    "semantic_hash": ""
+  },
+  "scripts/build-desktop.mjs": {
+    "mtime": 1794476323.2383423,
+    "seen": 1794477526.227747,
+    "ast_hash": "00bf2a75c7dabb3bded8f6939ea98819",
+    "semantic_hash": ""
+  },
+  "scripts/check-base-db.mjs": {
+    "mtime": 1794475190.6051316,
+    "seen": 1794477526.227747,
+    "ast_hash": "1264f95fabe29660d2024bcdfbdff436",
+    "semantic_hash": ""
+  },
+  "docs/DESKTOP.md": {
+    "mtime": 1794477513.6699493,
+    "seen": 1794477526.227747,
+    "ast_hash": "ef8378728b1ef9e69cc7ac5b1a39d7d4",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
-    "mtime": 1794470482.555052,
-    "seen": 1794471437.1601014,
-    "ast_hash": "619df00a65b508e7c34e28efba453165",
+    "mtime": 1794475268.660904,
+    "seen": 1794477526.227747,
+    "ast_hash": "0c7f8b516f1ecfaf66a1333a08fa405e",
     "semantic_hash": ""
   }
 }

@@ -1,0 +1,38 @@
+appId: ir.firoozeh.crm
+productName: Firoozeh
+copyright: Firoozeh CRM
+
+directories:
+  app: desktop
+  output: release
+
+files:
+  - main.js
+  - preload.js
+  - package.json
+
+extraResources:
+  - from: .desktop-build/server.tar.gz
+    to: server.tar.gz
+  - from: .desktop-build/base.db
+    to: base.db
+
+asar: true
+compression: normal
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: public/icons/icon-512.png
+  artifactName: Firoozeh-Setup-${version}.${ext}
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Firoozeh
+  deleteAppDataOnUninstall: false

@@ -19,3 +19,10 @@ graphify-out/cache/
 next-env.d.ts
 tsconfig.tsbuildinfo
 shoot.cjs
+
+# بستهٔ دسکتاپ (خروجی ساخت — در انتشار گیت‌هاب قرار می‌گیرد، نه در مخزن)
+release/
+.desktop-build/
+desktop/server/
+desktop/package.json
+desktop/base.db

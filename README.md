@@ -7,6 +7,7 @@ CRM سبک و سریع برای تیم‌های فروش ایرانی. فارس�
 - 📋 [بک‌لاگ ویژگی‌ها](docs/BACKLOG.md) — چه کاری در جریان است
 - 🧠 [نقشهٔ دانش کدبیس](graphify-out/GRAPH_REPORT.md) — معماری بدون خواندن همهٔ فایل‌ها
 - 📄 [سند مفهومی و معماری](docs/CONCEPT.md)
+- 🖥️ [اپ دسکتاپ قابل نصب](docs/DESKTOP.md) — نسخهٔ ویندوز با دیتابیس اختصاصی
 - 🚀 [راهنمای استقرار در مغازه](docs/DEPLOY.md)
 - 🎨 جهت بصری: «فیروزه و زعفران» — فیروزهٔ کاشی روی کاغذ سرد
 - 💰 همهٔ مبالغ با `Decimal` محاسبه می‌شوند، نه `number`
@@ -99,6 +100,15 @@ docs/                 سند مفهومی
 1. در `prisma/schema.prisma` مقدار `provider` را به `postgresql` تغییر بده
 2. `DATABASE_URL` را به رشتهٔ اتصال Postgres تغییر بده
 3. `npm run db:push && npm run db:seed`
+
+## اپ دسکتاپ (ویندوز)
+
+```bash
+npm run desktop:db && npm run desktop:build
+```
+
+خروجی: `release/Firoozeh-Setup-<version>.exe` — نصب‌شدنی، با دیتابیس خودش.
+جزئیات: [docs/DESKTOP.md](docs/DESKTOP.md)
 
 ## استقرار روی یک دستگاه (مغازه)
 
