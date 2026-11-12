@@ -11,6 +11,8 @@ dist/
 Thumbs.db
 prisma/*.db
 prisma/*.db-journal
+data/
+backups/
 src/generated/
 graphify-out/
 .vercel

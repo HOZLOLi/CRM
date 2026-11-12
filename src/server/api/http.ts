@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 import { getSession } from "@/server/auth";
+import { dbReady } from "@/server/db";
 
 export async function guard() {
+  await dbReady();
   const user = await getSession();
   if (!user) {
     return { user: null, response: NextResponse.json({ error: "UNAUTHORIZED" }, { status: 401 }) };

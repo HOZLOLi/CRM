@@ -4,16 +4,19 @@ CRM سبک و سریع برای تیم‌های فروش ایرانی. فارس�
 با قیف فروش کانبان و دستیار هوش مصنوعی که داده‌های خودت را می‌شناسد.
 
 - 📄 [سند مفهومی و معماری](docs/CONCEPT.md)
+- 🚀 [راهنمای استقرار در مغازه](docs/DEPLOY.md)
 - 🎨 جهت بصری: «فیروزه و زعفران» — فیروزهٔ کاشی روی کاغذ سرد
 - 💰 همهٔ مبالغ با `Decimal` محاسبه می‌شوند، نه `number`
 
 ## راه‌اندازی
 
 ```bash
-npm install          # نصب وابستگی‌ها
+npm ci               # نصب وابستگی‌ها
 npm run setup        # ساخت دیتابیس + داده نمونه
 npm run dev          # http://localhost:3000
 ```
+
+برای استقرار واقعی (یک سرور در مغازه، دسترسی از چند دستگاه): [docs/DEPLOY.md](docs/DEPLOY.md)
 
 ### حساب‌های نمونه
 
@@ -28,7 +31,7 @@ npm run dev          # http://localhost:3000
 فایل `.env` را از `.env.example` بساز (یا ویرایش کن):
 
 ```ini
-DATABASE_URL="file:./dev.db"
+DATABASE_URL="file:../data/crm.db"
 AUTH_SECRET="یک-رشته-تصادفی-بلند"
 AI_BASE_URL="https://openrouter.ai/api/v1"
 AI_API_KEY="sk-..."
@@ -46,6 +49,8 @@ AI_MODEL="openai/gpt-4o-mini"
 | `npm run setup` | `prisma generate` + `db push` + `seed` |
 | `npm run db:push` | همگام‌سازی اسکیما با دیتابیس |
 | `npm run db:seed` | دادهٔ نمونه |
+| `npm run db:backup` | پشتیبان‌گیری بدون توقف سرور |
+| `npm run start:prod` | بررسی env + اجرای پروداکشن روی `0.0.0.0` |
 | `npm run db:studio` | Prisma Studio |
 | `npm run typecheck` | بررسی تایپ |
 
@@ -91,6 +96,21 @@ docs/                 سند مفهومی
 1. در `prisma/schema.prisma` مقدار `provider` را به `postgresql` تغییر بده
 2. `DATABASE_URL` را به رشتهٔ اتصال Postgres تغییر بده
 3. `npm run db:push && npm run db:seed`
+
+## استقرار روی یک دستگاه (مغازه)
+
+```bash
+cp .env.example .env          # AUTH_SECRET را پر کن
+npm ci && npm run setup && npm run build
+npm run start:prod            # آدرس شبکه را چاپ می‌کند
+```
+
+- **اجرای خودکار با بوت ویندوز:** `scripts\install-autostart.ps1`
+- **پشتیبان روزانه:** `scripts\install-backup-task.ps1`
+- **سلامت سرویس:** `GET /api/health`
+- **Docker:** `docker compose up -d --build`
+
+جزئیات کامل: [docs/DEPLOY.md](docs/DEPLOY.md)
 
 ## CI
 
