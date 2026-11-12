@@ -425,16 +425,10 @@
     "ast_hash": "72f00ed0241269485b03cd309f38e4d1",
     "semantic_hash": "72f00ed0241269485b03cd309f38e4d1"
   },
-  "vitest.config.ts": {
-    "mtime": 1794468201.69373,
-    "seen": 1794471145.0054061,
-    "ast_hash": "36bfb806dc0e2c274292dfaae5be6577",
-    "semantic_hash": "36bfb806dc0e2c274292dfaae5be6577"
-  },
   ".githooks/pre-commit": {
-    "mtime": 1794471581.1080804,
-    "seen": 1794471695.435871,
-    "ast_hash": "52b6a735e62629f0ce30bb12c13cff0c",
+    "mtime": 1794471882.2362745,
+    "seen": 1794471902.691754,
+    "ast_hash": "658867296a75c800c2be0228ead0987f",
     "semantic_hash": ""
   },
   ".agents/skills/find-skills/SKILL.md": {
@@ -549,6 +543,12 @@
     "mtime": 1794471708.291548,
     "seen": 1794471719.6649902,
     "ast_hash": "1f1d7e17562fed7d97f8ef8f77bc53ac",
+    "semantic_hash": ""
+  },
+  "vitest.config.mts": {
+    "mtime": 1794468201.69373,
+    "seen": 1794471902.6922717,
+    "ast_hash": "36bfb806dc0e2c274292dfaae5be6577",
     "semantic_hash": ""
   },
   "package-lock.json": {

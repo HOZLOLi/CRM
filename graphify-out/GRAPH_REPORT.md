@@ -1,7 +1,7 @@
 # Graph Report - CRM  (2026-11-12)
 
 ## Corpus Check
-- 74 files · ~32,609 words
+- 74 files · ~32,643 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 9 file(s) not represented in the graph (top: (none) 3, .woff2 2, .example 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `801b33f8`
+- Built from commit: `21189435`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -55,8 +55,6 @@
 10. `react` - 18 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `ContactsPage()` --calls--> `ContactsView()`  [EXTRACTED]
-  src/app/(app)/contacts/page.tsx → src/components/features/contacts-view.tsx
 - `DashboardPage()` --calls--> `PageBody()`  [EXTRACTED]
   src/app/(app)/dashboard/page.tsx → src/components/layout/page-header.tsx
 - `DashboardPage()` --calls--> `PageHeader()`  [EXTRACTED]
@@ -64,6 +62,8 @@
 - `DashboardPage()` --calls--> `dec()`  [EXTRACTED]
   src/app/(app)/dashboard/page.tsx → src/lib/money.ts
 - `DashboardPage()` --calls--> `formatMoney()`  [EXTRACTED]
+  src/app/(app)/dashboard/page.tsx → src/lib/money.ts
+- `DashboardPage()` --calls--> `sum()`  [EXTRACTED]
   src/app/(app)/dashboard/page.tsx → src/lib/money.ts
 
 ## Import Cycles
