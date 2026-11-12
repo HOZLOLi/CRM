@@ -92,6 +92,17 @@ docs/                 سند مفهومی
 2. `DATABASE_URL` را به رشتهٔ اتصال Postgres تغییر بده
 3. `npm run db:push && npm run db:seed`
 
+## CI
+
+فایل آمادهٔ GitHub Actions در `docs/github-actions-ci.yml` است. برای فعال‌سازی:
+
+```bash
+gh auth refresh -s workflow          # افزودن دسترسی workflow به توکن
+mkdir -p .github/workflows
+cp docs/github-actions-ci.yml .github/workflows/ci.yml
+git add .github && git commit -m "ci: add workflow" && git push
+```
+
 ## اسکیل‌های عامل (Agent Skills)
 
 این پروژه با این اسکیل‌ها ساخته و بازبینی می‌شود (نصب در `~/.pi/agent/skills/`):
