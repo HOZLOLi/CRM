@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar } from "@/components/ui/avatar";
 import { MODULES } from "@/modules/registry";
 import { isAiConfigured, getModelId } from "@/server/ai/provider";
+import { getSettings } from "@/server/settings";
+import { SettingsEditor } from "@/components/features/settings-editor";
 import { formatDate } from "@/lib/date";
 
 export const metadata = { title: "تنظیمات" };
@@ -19,6 +21,7 @@ const ROLE_LABEL: Record<string, string> = {
 
 export default async function SettingsPage() {
   const user = await requireUser();
+  const settings = await getSettings();
   const [users, counts] = await Promise.all([
     db.user.findMany({ orderBy: { createdAt: "asc" } }),
     Promise.all([
@@ -81,6 +84,19 @@ export default async function SettingsPage() {
               </p>
             </div>
           </Panel>
+        </div>
+
+        {/* engine settings */}
+        <div>
+          <div className="mb-3 flex items-center gap-2">
+            <h2 className="text-[16px] font-semibold text-ink">موتور فروش دوره‌ای</h2>
+            <Badge tone="turquoise">قابل ویرایش</Badge>
+          </div>
+          <p className="mb-4 max-w-2xl text-[12.5px] leading-6 text-ink-soft">
+            وزن‌ها، آستانه‌ها، ماتریس تصمیم و متن‌ها همه از همین‌جا کنترل می‌شوند.
+            تغییرات بلافاصله در کارتابل و ارزیابی مشتریان اثر می‌گذارد.
+          </p>
+          <SettingsEditor initial={settings} />
         </div>
 
         {/* team */}

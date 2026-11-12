@@ -1,5 +1,6 @@
 import { PrismaClient, Prisma } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { DEFAULT_SETTINGS, SETTING_GROUPS, SETTING_SCHEMAS } from "../src/lib/settings.ts";
 
 const db = new PrismaClient();
 const D = (v: number | string) => new Prisma.Decimal(v);
@@ -8,6 +9,14 @@ const daysFromNow = (n: number) => new Date(Date.now() + n * 86_400_000);
 
 async function main() {
   console.log("→ پاک‌سازی داده‌های قبلی…");
+  await db.setting.deleteMany();
+  await db.decisionLog.deleteMany();
+  await db.followUpTask.deleteMany();
+  await db.purchaseCycle.deleteMany();
+  await db.temperatureEvaluation.deleteMany();
+  await db.orderItem.deleteMany();
+  await db.order.deleteMany();
+  await db.customerProfile.deleteMany();
   await db.auditLog.deleteMany();
   await db.aiMessage.deleteMany();
   await db.aiConversation.deleteMany();
@@ -317,6 +326,18 @@ async function main() {
       authorId: admin.id,
     },
   });
+
+
+  console.log("→ نوشتن تنظیمات پیش‌فرض…");
+  for (const key of Object.keys(SETTING_SCHEMAS) as (keyof typeof SETTING_SCHEMAS)[]) {
+    await db.setting.create({
+      data: {
+        key,
+        group: SETTING_GROUPS[key],
+        value: JSON.stringify(DEFAULT_SETTINGS[key]),
+      },
+    });
+  }
 
   console.log("\n✅ داده نمونه ساخته شد.");
   console.log("   ورود: admin@firoozeh.ir / demo1234");

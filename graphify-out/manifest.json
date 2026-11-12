@@ -30,10 +30,10 @@
     "semantic_hash": "a3bf892c01460aadc8e23071da85ae27"
   },
   "prisma/seed.ts": {
-    "mtime": 1794467701.3914053,
-    "seen": 1794471145.0054061,
-    "ast_hash": "d229afb762483a928c1f7ca8ed2d67e0",
-    "semantic_hash": "d229afb762483a928c1f7ca8ed2d67e0"
+    "mtime": 1794472752.751367,
+    "seen": 1794472958.3080947,
+    "ast_hash": "5a616971e13637e5f9f19aef0077b3bd",
+    "semantic_hash": ""
   },
   "public/sw.js": {
     "mtime": 1794470335.037041,
@@ -120,10 +120,10 @@
     "semantic_hash": "9c2e931056577821455388fde2cf4319"
   },
   "src/app/(app)/settings/page.tsx": {
-    "mtime": 1794467436.3397853,
-    "seen": 1794471145.0054061,
-    "ast_hash": "2c22361c8640d96aaa4236d396b81e2f",
-    "semantic_hash": "2c22361c8640d96aaa4236d396b81e2f"
+    "mtime": 1794472643.1786878,
+    "seen": 1794472958.3080947,
+    "ast_hash": "991d7e8e35d8a47855e22d850fc2c5ae",
+    "semantic_hash": ""
   },
   "src/app/(app)/tasks/page.tsx": {
     "mtime": 1794467390.890279,
@@ -420,10 +420,10 @@
     "semantic_hash": "36ea7c412454839c4baca861fbfebf08"
   },
   "tsconfig.json": {
-    "mtime": 1794467164.9265695,
-    "seen": 1794471145.0054061,
-    "ast_hash": "72f00ed0241269485b03cd309f38e4d1",
-    "semantic_hash": "72f00ed0241269485b03cd309f38e4d1"
+    "mtime": 1794472674.614369,
+    "seen": 1794472958.3080947,
+    "ast_hash": "f6d9a8fafae3a417a97a3533fdffd4ec",
+    "semantic_hash": ""
   },
   ".githooks/pre-commit": {
     "mtime": 1794471928.3245053,
@@ -552,9 +552,39 @@
     "semantic_hash": ""
   },
   "docs/BACKLOG.md": {
-    "mtime": 1794472082.3026721,
-    "seen": 1794472516.4502943,
-    "ast_hash": "cb2daf319234601a77cf8396f4e3e3d4",
+    "mtime": 1794472870.04329,
+    "seen": 1794472958.3080947,
+    "ast_hash": "3d3f788577110264a07b7f1eccd7860f",
+    "semantic_hash": ""
+  },
+  "src/app/api/settings/route.ts": {
+    "mtime": 1794472609.4323044,
+    "seen": 1794472958.3080947,
+    "ast_hash": "8c1da69e5d65fcfbc8d798dcbdfbc8e3",
+    "semantic_hash": ""
+  },
+  "src/components/features/settings-editor.tsx": {
+    "mtime": 1794472857.1395283,
+    "seen": 1794472958.3080947,
+    "ast_hash": "d405dc04bf8187541ff0f0120d1955a4",
+    "semantic_hash": ""
+  },
+  "src/lib/settings.test.ts": {
+    "mtime": 1794472857.1750417,
+    "seen": 1794472958.3080947,
+    "ast_hash": "c66b2a2d6cd20c84874984754029a21c",
+    "semantic_hash": ""
+  },
+  "src/lib/settings.ts": {
+    "mtime": 1794472590.0796773,
+    "seen": 1794472958.3080947,
+    "ast_hash": "060bf91eb76b8d7f3d4b5b4bbcbb38a2",
+    "semantic_hash": ""
+  },
+  "src/server/settings.ts": {
+    "mtime": 1794472658.124302,
+    "seen": 1794472958.3080947,
+    "ast_hash": "d0f7be8c9f034ae5d1fef2da38f7bf18",
     "semantic_hash": ""
   },
   "package-lock.json": {
