@@ -1,4 +1,4 @@
-import type { BandKey, Channel, RangeKey } from "./settings";
+import { BAND_LABELS, RANGE_LABELS, STAGE_LABELS, type BandKey, type Channel, type RangeKey } from "./settings";
 
 /**
  * ماتریس تصمیم کارتابل.
@@ -86,7 +86,9 @@ export function decideFollowUp(input: FollowUpInput, rules: FollowUpRules): Foll
   const stage = rules.matrix[input.band][range];
   let channel = rules.channels[input.band];
 
-  reasons.push(`دمای ${input.band} × بازهٔ ${range} ← مرحلهٔ ${stage}`);
+  reasons.push(
+    `دمای «${BAND_LABELS[input.band]}» × بازهٔ «${RANGE_LABELS[range]}» ← مرحلهٔ «${STAGE_LABELS[stage]}»`,
+  );
 
   // ---- قانون ۲: دو تماس بی‌پاسخ ------------------------------------------
   const attempts = input.attempts ?? 0;

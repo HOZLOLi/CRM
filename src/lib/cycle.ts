@@ -1,4 +1,4 @@
-import { Decimal } from "./money";
+import Decimal from "decimal.js";
 
 /**
  * موتور پیش‌بینی چرخهٔ خرید.

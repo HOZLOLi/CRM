@@ -1,6 +1,7 @@
 import { PrismaClient, Prisma } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { DEFAULT_SETTINGS, SETTING_GROUPS, SETTING_SCHEMAS } from "../src/lib/settings.ts";
+import { seedSalesEngine } from "./seed-engine.ts";
 
 const db = new PrismaClient();
 const D = (v: number | string) => new Prisma.Decimal(v);
@@ -173,16 +174,29 @@ async function main() {
 
   console.log("→ ساخت محصولات…");
   const productDefs = [
-    { name: "اشتراک سالانه پلتفرم — پایه", sku: "SUB-BASE-Y", unitPrice: 180_000_000, taxRate: 9 },
-    { name: "اشتراک سالانه پلتفرم — حرفه‌ای", sku: "SUB-PRO-Y", unitPrice: 420_000_000, taxRate: 9 },
-    { name: "پیاده‌سازی و راه‌اندازی", sku: "IMP-01", unitPrice: 250_000_000, taxRate: 9 },
-    { name: "آموزش تیم (روزانه)", sku: "TRN-DAY", unitPrice: 45_000_000, taxRate: 9 },
-    { name: "پشتیبانی ویژه سالانه", sku: "SUP-PRI-Y", unitPrice: 120_000_000, taxRate: 9 },
+    { name: "ظرف فوم تک‌پرس درب‌دار", sku: "FM-1P", unitPrice: 1_480_000, costPrice: 1_250_000, unit: "بسته ۵۰۰ عددی", packSize: 500 },
+    { name: "ظرف فوم دوپرس", sku: "FM-2P", unitPrice: 1_950_000, costPrice: 1_650_000, unit: "بسته ۵۰۰ عددی", packSize: 500 },
+    { name: "لیوان کاغذی ۷ اونس", sku: "CP-7OZ", unitPrice: 1_120_000, costPrice: 900_000, unit: "کارتن ۱۰۰۰ عددی", packSize: 1000 },
+    { name: "لیوان پلاستیکی شفاف", sku: "PL-CLR", unitPrice: 780_000, costPrice: 620_000, unit: "کارتن ۱۰۰۰ عددی", packSize: 1000 },
+    { name: "سفره یکبارمصرف رولی", sku: "SF-ROL", unitPrice: 620_000, costPrice: 480_000, unit: "کارتن ۱۲ رول", packSize: 12 },
+    { name: "قاشق و چنگال بسته‌بندی‌شده", sku: "CT-SET", unitPrice: 940_000, costPrice: 750_000, unit: "کارتن ۱۰۰۰ ست", packSize: 1000 },
   ];
 
   const products = [];
   for (const p of productDefs) {
-    products.push(await db.product.create({ data: { ...p, unitPrice: D(p.unitPrice), taxRate: D(p.taxRate) } }));
+    products.push(
+      await db.product.create({
+        data: {
+          name: p.name,
+          sku: p.sku,
+          unitPrice: D(p.unitPrice),
+          costPrice: D(p.costPrice),
+          taxRate: D(9),
+          unit: p.unit,
+          packSize: p.packSize,
+        },
+      }),
+    );
   }
 
   console.log("→ ساخت معاملات…");
@@ -327,6 +341,18 @@ async function main() {
     },
   });
 
+
+  await seedSalesEngine({
+    db,
+    companies: companies.map((c) => ({ id: c.id, name: c.name })),
+    products: products.map((p) => ({
+      id: p.id,
+      name: p.name,
+      unitPrice: p.unitPrice,
+      costPrice: p.costPrice,
+    })),
+    users: { adminId: admin.id, managerId: manager.id, repId: rep.id },
+  });
 
   console.log("→ نوشتن تنظیمات پیش‌فرض…");
   for (const key of Object.keys(SETTING_SCHEMAS) as (keyof typeof SETTING_SCHEMAS)[]) {

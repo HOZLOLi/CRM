@@ -17,7 +17,7 @@
   "15": "vitest",
   "16": "next.config.mjs",
   "17": "install-skills.sh",
-  "18": "engine.test.ts",
+  "18": "sales-engine.ts",
   "19": "pre-push",
   "20": "pre-commit",
   "21": "decimal.js",
@@ -27,6 +27,18 @@
   "25": "install-autostart.ps1",
   "26": "install-backup-task.ps1",
   "27": "tailwind-merge",
+  "28": "resource-table.tsx",
+  "29": "PageHeader",
   "30": "@dnd-kit/core",
-  "32": "react-dom@^19.3.1"
+  "31": "cartable.tsx",
+  "32": "react-dom@^19.3.1",
+  "33": "followup.ts",
+  "34": "deals-board.tsx",
+  "35": "date.ts",
+  "36": "seed.ts",
+  "37": "cycle.ts",
+  "38": "button.tsx",
+  "39": "server/settings.ts",
+  "40": "app/layout.tsx",
+  "41": "temperature.ts"
 }

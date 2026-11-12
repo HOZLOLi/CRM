@@ -1,5 +1,6 @@
 import {
   LayoutDashboard,
+  ClipboardList,
   Users,
   Building2,
   Target,
@@ -41,6 +42,16 @@ export const MODULES: ModuleDef[] = [
     description: "نمای کلی فروش و فعالیت‌ها",
   },
   {
+    id: "cartable",
+    label: "کارتابل امروز",
+    href: "/cartable",
+    icon: ClipboardList,
+    group: "main",
+    mobile: true,
+    enabled: true,
+    description: "چه کسی را امروز پیگیری کنیم و چه بگوییم",
+  },
+  {
     id: "deals",
     label: "قیف فروش",
     href: "/deals",
@@ -66,7 +77,7 @@ export const MODULES: ModuleDef[] = [
     href: "/companies",
     icon: Building2,
     group: "main",
-    mobile: true,
+    mobile: false,
     enabled: true,
     description: "سازمان‌ها و مشتریان",
   },
