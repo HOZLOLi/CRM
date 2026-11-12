@@ -1,0 +1,84 @@
+# AGENTS.md — دستور کار عامل‌های هوش مصنوعی
+
+این فایل برای **هر** عامل هوش مصنوعی است که روی این مخزن کار می‌کند. قبل از هر
+تغییر، این را بخوان. کوتاه است چون بقیه در اسکیل‌هاست.
+
+## ۰. اول این‌ها را بخوان
+
+| ترتیب | فایل | چرا |
+|---|---|---|
+| ۱ | `.agents/skills/firoozeh-workflow/SKILL.md` | نقشهٔ مخزن، دستورها، دستور پخت‌ها |
+| ۲ | `.agents/skills/firoozeh-design/SKILL.md` | **هر** تغییر ظاهری |
+| ۳ | `graphify-out/GRAPH_REPORT.md` | معماری بدون خواندن ۷۰ فایل |
+| ۴ | `docs/CONCEPT.md` | چرا این محصول این‌طور است |
+| ۵ | `docs/DEPLOY.md` | استقرار در مغازه |
+
+برای پرسش از معماری، به‌جای خواندن فایل‌ها:
+
+```bash
+graphify query "چطور مرحلهٔ معامله ذخیره می‌شود؟"
+graphify explain "createSession"
+graphify god-nodes
+```
+
+## ۱. قانون طلایی
+
+> **بعد از هر تغییر کارکردنی: `commit` + `push`.**
+>
+> این پروژه در چند نشست ساخته می‌شود. تاریخچهٔ گیت تنها حافظهٔ مشترک است.
+> تغییرِ commit‌نشده = کارِ گم‌شده.
+
+قبل از push:
+
+```bash
+npx tsc --noEmit && npx vitest run && npx next build
+```
+
+## ۲. ده قانون سخت
+
+1. **پول هرگز `number` نیست** — فقط `Decimal` از `src/lib/money.ts`
+2. **هیچ کوئری Prisma در کامپوننت کلاینت** — داده از Server Component یا API
+3. **هر Route Handler با `guard()` شروع می‌شود**
+4. **هر ورودی با Zod پارس می‌شود** (`src/lib/validators.ts`)
+5. **`.env` / `data/` / `backups/` هرگز commit نمی‌شوند**
+6. **هیچ رنگ hex در کامپوننت** — فقط توکن‌های `globals.css`
+7. **هیچ `ease-in`، هیچ `transition: all`**
+8. **ورودی‌ها روی موبایل `text-[16px]`** (وگرنه iOS زوم می‌کند)
+9. **بعد از تغییر ساختاری: `graphify update .`**
+10. **ماژول جدید = صفحه + یک خط در `src/modules/registry.ts`**
+
+## ۳. وضعیت فعلی
+
+| مورد | وضعیت |
+|---|---|
+| فاز | ۰ تا ۱۰ کامل — CRM کارکردنی |
+| ماژول‌ها | داشبورد، قیف فروش، مخاطبین، شرکت‌ها، سرنخ‌ها، وظایف، دستیار AI، تنظیمات |
+| دیتابیس | SQLite در `data/crm.db` (قابل انتقال به PostgreSQL) |
+| تست | ۲۷ تست برای `money.ts` |
+| استقرار | تک‌دستگاه، اسکریپت‌های ویندوز + Docker |
+| PWA | کامل (SW، آیکون، صفحهٔ آفلاین) |
+
+## ۴. کارهای باقی‌مانده (به ترتیب اولویت)
+
+1. صفحهٔ جزئیات معامله + تایم‌لاین فعالیت
+2. فاکتور و محصولات (UI) — مدل داده آماده است
+3. گزارش‌های پیشرفته و نمودار
+4. جست‌وجوی سراسری (⌘K) — دکمه‌اش هست، عملکردش نه
+5. فعال‌سازی CI (`gh auth refresh -s workflow`)
+
+## ۵. ورود برای تست
+
+```
+manager@firoozeh.ir / demo1234
+admin@firoozeh.ir   / demo1234
+rep@firoozeh.ir     / demo1234
+```
+
+## ۶. اسکیل‌ها
+
+همه در `.agents/skills/` و نسخه‌بندی‌شده‌اند:
+
+`firoozeh-design` · `firoozeh-workflow` · `web-design-guidelines` ·
+`improve-animations` · `frontend-design` · `find-skills` · `graphify`
+
+نصب مجدد روی ماشین جدید: `bash scripts/install-skills.sh`

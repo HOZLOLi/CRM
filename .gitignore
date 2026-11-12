@@ -14,7 +14,7 @@ prisma/*.db-journal
 data/
 backups/
 src/generated/
-graphify-out/
+graphify-out/cache/
 .vercel
 next-env.d.ts
 tsconfig.tsbuildinfo
