@@ -18,10 +18,10 @@
     "semantic_hash": "637f33c2bbd36d5f528b4f29399c723b"
   },
   "package.json": {
-    "mtime": 1794470519.626498,
-    "seen": 1794471145.004891,
-    "ast_hash": "142f1dfa7950fe3f459a32ce7706c85d",
-    "semantic_hash": "142f1dfa7950fe3f459a32ce7706c85d"
+    "mtime": 1794471402.5165448,
+    "seen": 1794471437.1601014,
+    "ast_hash": "1fc6819eb68391b56285bc1cb1dc6eaf",
+    "semantic_hash": ""
   },
   "postcss.config.mjs": {
     "mtime": 1794466825.7512887,
@@ -430,5 +430,125 @@
     "seen": 1794471145.0054061,
     "ast_hash": "36bfb806dc0e2c274292dfaae5be6577",
     "semantic_hash": "36bfb806dc0e2c274292dfaae5be6577"
+  },
+  ".githooks/pre-commit": {
+    "mtime": 1794471402.3733137,
+    "seen": 1794471437.1596062,
+    "ast_hash": "a2f966585e9613cf2531723e3fcedb40",
+    "semantic_hash": ""
+  },
+  ".agents/skills/find-skills/SKILL.md": {
+    "mtime": 1794471185.9618056,
+    "seen": 1794471437.1601014,
+    "ast_hash": "d4db4ca058610fd400ac09b1ac019a16",
+    "semantic_hash": ""
+  },
+  ".agents/skills/firoozeh-design/SKILL.md": {
+    "mtime": 1794471241.3159654,
+    "seen": 1794471437.1601014,
+    "ast_hash": "da709849afaa4b393c1b0b1e701083db",
+    "semantic_hash": ""
+  },
+  ".agents/skills/firoozeh-workflow/SKILL.md": {
+    "mtime": 1794471419.1162684,
+    "seen": 1794471437.1601014,
+    "ast_hash": "d09af884575d252011e8a94a033a1128",
+    "semantic_hash": ""
+  },
+  ".agents/skills/frontend-design/LICENSE.txt": {
+    "mtime": 1794471185.9638698,
+    "seen": 1794471437.1601014,
+    "ast_hash": "29256199be2a609aac596980ffc11996",
+    "semantic_hash": ""
+  },
+  ".agents/skills/frontend-design/SKILL.md": {
+    "mtime": 1794471185.964876,
+    "seen": 1794471437.1601014,
+    "ast_hash": "9dab6b03d40b3a94a97a70bc65cf00f5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/improve-animations/AUDIT.md": {
+    "mtime": 1794471185.9717617,
+    "seen": 1794471437.1601014,
+    "ast_hash": "c44d73796ad81b4033094966cdd682d4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/improve-animations/PLAN-TEMPLATE.md": {
+    "mtime": 1794471185.9700398,
+    "seen": 1794471437.1601014,
+    "ast_hash": "bde30d8893f5140f914a25d847a92887",
+    "semantic_hash": ""
+  },
+  ".agents/skills/improve-animations/SKILL.md": {
+    "mtime": 1794471185.9707646,
+    "seen": 1794471437.1601014,
+    "ast_hash": "dbd851dc5a7f270a51923bb9f167bdfb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/web-design-guidelines/SKILL.md": {
+    "mtime": 1794471185.9733186,
+    "seen": 1794471437.1601014,
+    "ast_hash": "dcfab1199a9d18284122dc8aae1a67a4",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1794471419.1173024,
+    "seen": 1794471437.1601014,
+    "ast_hash": "92403e144852ec688277424c773e8200",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1794471419.1178205,
+    "seen": 1794471437.1601014,
+    "ast_hash": "38c4c8491128a20b11fe1f2ff52b96d4",
+    "semantic_hash": ""
+  },
+  "docs/CONCEPT.md": {
+    "mtime": 1794470751.3476317,
+    "seen": 1794471437.1601014,
+    "ast_hash": "3cf7daea841200fb678dfe3849e60a12",
+    "semantic_hash": ""
+  },
+  "docs/DEPLOY.md": {
+    "mtime": 1794470579.9036744,
+    "seen": 1794471437.1601014,
+    "ast_hash": "4fd8e12f49e6105d048a0be92f70a1f1",
+    "semantic_hash": ""
+  },
+  "public/icons/apple-touch-icon.png": {
+    "mtime": 1794470322.872,
+    "seen": 1794471437.1601014,
+    "ast_hash": "e50a4e05f367d2765ce14593be07e0f9",
+    "semantic_hash": ""
+  },
+  "public/icons/icon-192.png": {
+    "mtime": 1794470322.851,
+    "seen": 1794471437.1601014,
+    "ast_hash": "83e452d06ac86e10511b2ed58157eee9",
+    "semantic_hash": ""
+  },
+  "public/icons/icon-512.png": {
+    "mtime": 1794470322.86,
+    "seen": 1794471437.1601014,
+    "ast_hash": "8321c3c211fe2c21b96ffbcaa389ad07",
+    "semantic_hash": ""
+  },
+  "public/icons/maskable-512.png": {
+    "mtime": 1794470322.866,
+    "seen": 1794471437.1601014,
+    "ast_hash": "2f82d087215a04968028c49938d09063",
+    "semantic_hash": ""
+  },
+  "src/app/icon.svg": {
+    "mtime": 1794467709.487634,
+    "seen": 1794471437.1601014,
+    "ast_hash": "f5c5732ff96eece3cf927b9e86b44f96",
+    "semantic_hash": ""
+  },
+  "package-lock.json": {
+    "mtime": 1794470482.555052,
+    "seen": 1794471437.1601014,
+    "ast_hash": "619df00a65b508e7c34e28efba453165",
+    "semantic_hash": ""
   }
 }

@@ -151,8 +151,15 @@ bash scripts/install-skills.sh
 `graphify-out/` یک گراف از کدبیس است تا عامل بعدی بدون سوزاندن توکن، معماری را بفهمد.
 
 ```bash
-graphify query "چطور یک معامله جابه‌جا می‌شود؟"
+graphify query "deal stage move kanban"   # کلیدواژه انگلیسی
 graphify explain "createSession"
 graphify god-nodes
 graphify update .        # بعد از هر تغییر ساختاری
+```
+
+## بررسی پیش از کامیت
+
+```bash
+npm run hooks:install    # یک‌بار؛ typecheck + تست را قبل از هر کامیت اجرا می‌کند
+npm run verify           # اجرای دستی
 ```

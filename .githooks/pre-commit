@@ -1,0 +1,12 @@
+#!/bin/sh
+# فیروزه — بررسی پیش از کامیت
+# فعال‌سازی: npm run hooks:install
+set -e
+
+echo "→ typecheck…"
+npx tsc --noEmit
+
+echo "→ tests…"
+npx vitest run --reporter=dot
+
+echo "✓ checks passed"

@@ -16,9 +16,10 @@
 برای پرسش از معماری، به‌جای خواندن فایل‌ها:
 
 ```bash
-graphify query "چطور مرحلهٔ معامله ذخیره می‌شود؟"
+graphify query "deal stage move kanban"   # کلیدواژه انگلیسی، چون نمادها انگلیسی‌اند
 graphify explain "createSession"
-graphify god-nodes
+graphify affected "money.ts"
+graphify god-nodes --top 10
 ```
 
 ## ۱. قانون طلایی
@@ -31,7 +32,14 @@ graphify god-nodes
 قبل از push:
 
 ```bash
-npx tsc --noEmit && npx vitest run && npx next build
+npm run verify && npx next build
+```
+
+هوک `pre-commit` این بررسی‌ها را خودکار اجرا می‌کند. اگر روی ماشین جدید کلون
+کردی، یک‌بار فعالش کن:
+
+```bash
+npm run hooks:install
 ```
 
 ## ۲. ده قانون سخت

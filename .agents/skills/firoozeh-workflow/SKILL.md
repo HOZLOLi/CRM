@@ -151,12 +151,16 @@ graphify-out/         ← نقشهٔ دانش کدبیس
 معماری را بفهمد.
 
 ```bash
-graphify query "چطور یک معامله جابه‌جا می‌شود؟"     # پرسش از گراف
-graphify explain "createSession"                    # توضیح یک نماد
-graphify path "DealsBoard" "db"                     # مسیر بین دو نماد
-graphify god-nodes                                  # گره‌های اصلی معماری
+graphify query "deal stage move kanban"             # پرسش از گراف
+graphify explain "createSession"                    # توضیح یک نماد و همسایه‌هایش
+graphify path "DealsBoard" "db"                     # کوتاه‌ترین مسیر بین دو نماد
+graphify affected "money.ts"                        # چه چیزهایی از این تغییر می‌کنند
+graphify god-nodes --top 10                         # گره‌های اصلی معماری
 graphify update .                                   # به‌روزرسانی بعد از تغییر کد (بدون هزینه)
 ```
+
+> **نکته:** شناسه‌های کد انگلیسی‌اند، پس پرسش را با **کلیدواژهٔ انگلیسی** بده
+> (`deal`, `money`, `auth`, `kanban`) نه فارسی. برای پرسش فارسی نتیجه‌ای برنمی‌گردد.
 
 **بعد از هر تغییر ساختاری** (فایل جدید، تابع جدید، حذف فایل):
 
