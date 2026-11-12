@@ -546,9 +546,9 @@
     "semantic_hash": ""
   },
   ".githooks/pre-push": {
-    "mtime": 1794471635.0183735,
-    "seen": 1794471695.435871,
-    "ast_hash": "0e103a585f2ba87e08a771d920859399",
+    "mtime": 1794471708.291548,
+    "seen": 1794471719.6649902,
+    "ast_hash": "1f1d7e17562fed7d97f8ef8f77bc53ac",
     "semantic_hash": ""
   },
   "package-lock.json": {
