@@ -2,6 +2,8 @@ import { requireUser } from "@/server/auth";
 import { PageHeader, PageBody } from "@/components/layout/page-header";
 import { Cartable } from "@/components/features/cartable";
 import { buildCartable } from "@/server/sales-engine";
+import { isAiConfigured } from "@/server/ai/provider";
+import { AiInsight } from "@/components/features/ai-insight";
 
 export const metadata = { title: "کارتابل امروز" };
 export const dynamic = "force-dynamic";
@@ -25,7 +27,17 @@ export default async function CartablePage() {
               }${overdue ? ` · ${overdue.toLocaleString("fa-IR")} مورد تأخیر` : ""}`
         }
       />
-      <PageBody>
+      <PageBody className="flex flex-col gap-5">
+        <AiInsight
+          scope="cartable"
+          title="تحلیل کارتابل امروز"
+          configured={isAiConfigured()}
+          suggestions={[
+            "امروز اولویت‌بندی من چه باید باشد؟",
+            "کدام مشتری را باید حتماً امروز تماس بگیرم و چه بگویم؟",
+            "چه الگویی در مشتریان عقب‌افتاده می‌بینی؟",
+          ]}
+        />
         <Cartable initial={cards} />
       </PageBody>
     </>

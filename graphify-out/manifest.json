@@ -96,10 +96,10 @@
     "semantic_hash": "f754ec904342c7bc442d00359807fbe3"
   },
   "src/app/(app)/dashboard/page.tsx": {
-    "mtime": 1794467678.7535613,
-    "seen": 1794471145.0054061,
-    "ast_hash": "520bc4cf9d61fae6e7ca7afdd3f71baf",
-    "semantic_hash": "520bc4cf9d61fae6e7ca7afdd3f71baf"
+    "mtime": 1794474168.993837,
+    "seen": 1794474207.9202752,
+    "ast_hash": "4f5c94b122a35f59a204a34bdf613baf",
+    "semantic_hash": ""
   },
   "src/app/(app)/deals/page.tsx": {
     "mtime": 1794467294.269975,
@@ -486,9 +486,9 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1794472486.766899,
-    "seen": 1794472516.4502943,
-    "ast_hash": "f5243b7d01bb3daf47cac02a67d3e3e1",
+    "mtime": 1794474191.4965737,
+    "seen": 1794474207.9202752,
+    "ast_hash": "3594f655505ebeba83992e117284a91f",
     "semantic_hash": ""
   },
   "README.md": {
@@ -552,9 +552,9 @@
     "semantic_hash": ""
   },
   "docs/BACKLOG.md": {
-    "mtime": 1794472870.04329,
-    "seen": 1794472958.3080947,
-    "ast_hash": "3d3f788577110264a07b7f1eccd7860f",
+    "mtime": 1794474191.4955702,
+    "seen": 1794474207.9202752,
+    "ast_hash": "18690095c6c665a5249862e75bb04ab2",
     "semantic_hash": ""
   },
   "src/app/api/settings/route.ts": {
@@ -624,9 +624,9 @@
     "semantic_hash": ""
   },
   "src/app/(app)/cartable/page.tsx": {
-    "mtime": 1794473637.9935184,
-    "seen": 1794473707.1717038,
-    "ast_hash": "775863f06f2c49c42ab9c6c0187ed6e3",
+    "mtime": 1794473948.3545763,
+    "seen": 1794474207.9202752,
+    "ast_hash": "3f8957a75d10f700446d9c82934c1120",
     "semantic_hash": ""
   },
   "src/app/api/followups/route.ts": {
@@ -660,15 +660,33 @@
     "semantic_hash": ""
   },
   "src/app/(app)/companies/[id]/page.tsx": {
-    "mtime": 1794473857.9430914,
-    "seen": 1794473879.7706444,
-    "ast_hash": "872451e30e1c60502f0860f62c81038a",
+    "mtime": 1794473948.3545763,
+    "seen": 1794474207.9202752,
+    "ast_hash": "deb9f6f29c2253c1dfff03754dd9af24",
     "semantic_hash": ""
   },
   "src/components/features/temperature-form.tsx": {
     "mtime": 1794473725.669099,
     "seen": 1794473879.7706444,
     "ast_hash": "1eaac1e1ce4feec165efc58d5f061aa2",
+    "semantic_hash": ""
+  },
+  "src/app/api/ai/insight/route.ts": {
+    "mtime": 1794473948.353996,
+    "seen": 1794474207.9202752,
+    "ast_hash": "f17f6117d8b1fb314492ce82dbc094e3",
+    "semantic_hash": ""
+  },
+  "src/components/features/ai-insight.tsx": {
+    "mtime": 1794473938.9701402,
+    "seen": 1794474207.9202752,
+    "ast_hash": "840b09f1173f54c0b537311a8cfaddd2",
+    "semantic_hash": ""
+  },
+  "src/server/ai/scopes.ts": {
+    "mtime": 1794473909.3240845,
+    "seen": 1794474207.9202752,
+    "ast_hash": "bd8b37c9df32ccf59f6e88ce38331ba5",
     "semantic_hash": ""
   },
   "package-lock.json": {

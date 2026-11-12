@@ -14,6 +14,10 @@ import {
 } from "lucide-react";
 import { db } from "@/server/db";
 import { requireUser } from "@/server/auth";
+import { salesKpis } from "@/server/sales-engine";
+import { isAiConfigured } from "@/server/ai/provider";
+import { AiInsight } from "@/components/features/ai-insight";
+import { BAND_LABELS, type BandKey } from "@/lib/settings";
 import { PageHeader, PageBody } from "@/components/layout/page-header";
 import { Stat, StatGrid } from "@/components/ui/stat";
 import { Panel, PanelHeader, EmptyState } from "@/components/ui/panel";
@@ -78,6 +82,27 @@ export default async function DashboardPage() {
 
   const [companyCount, contactCount, openLeadCount] = counts;
 
+  const [kpis, overdueCycles] = await Promise.all([
+    salesKpis(),
+    db.purchaseCycle.findMany({
+      where: { status: "overdue" },
+      include: { customer: true, product: true },
+      orderBy: { expectedDate: "asc" },
+      take: 6,
+    }),
+  ]);
+
+  const bandTotal = Math.max(
+    1,
+    Object.values(kpis.bandCounts).reduce((sum, n) => sum + n, 0),
+  );
+  const BAND_TONE: Record<BandKey, string> = {
+    cold: "bg-line-strong",
+    warm: "bg-saffron",
+    hot: "bg-turquoise",
+    veryHot: "bg-clay",
+  };
+
   const openDeals = deals.filter((d) => d.status === "open");
   const wonDeals = deals.filter((d) => d.status === "won");
   const lostDeals = deals.filter((d) => d.status === "lost");
@@ -131,26 +156,126 @@ export default async function DashboardPage() {
       <PageBody className="flex flex-col gap-5">
         <StatGrid>
           <Stat
-            label="ارزش قیف فروش"
-            value={formatMoney(pipelineValue, { compact: true })}
-            hint={`${openDeals.length} معامله`}
+            label="درآمد کل"
+            value={formatMoney(kpis.revenue, { compact: true })}
+            hint={`${kpis.orderCount.toLocaleString("fa-IR")} سفارش`}
           />
           <Stat
-            label="ارزش وزنی"
-            value={formatMoney(weighted, { compact: true })}
-            hint="بر اساس احتمال هر مرحله"
+            label="سود ناخالص"
+            value={formatMoney(kpis.profit, { compact: true })}
+            hint={`حاشیه ${kpis.marginPercent.toNumber().toLocaleString("fa-IR", { maximumFractionDigits: 1 })}٪`}
           />
           <Stat
-            label="نرخ برد"
-            value={`${winRate.toLocaleString("fa-IR")}٪`}
-            hint={`${wonDeals.length} برده از ${closedCount} بسته‌شده`}
+            label="مشتریان گرم و داغ"
+            value={(kpis.bandCounts.hot + kpis.bandCounts.veryHot).toLocaleString("fa-IR")}
+            hint={`از ${bandTotal.toLocaleString("fa-IR")} ارزیابی`}
           />
           <Stat
-            label="وظایف سررسیدشده"
-            value={overdueTasks.length.toLocaleString("fa-IR")}
-            hint={overdueTasks.length > 0 ? "نیاز به پیگیری" : "همه چیز مرتب است"}
+            label="سفارش تأخیرخورده"
+            value={kpis.overdue.toLocaleString("fa-IR")}
+            hint={kpis.overdue > 0 ? "نیاز به پیگیری امروز" : "همه در موعد"}
           />
         </StatGrid>
+
+        <AiInsight
+          scope="dashboard"
+          title="تحلیل وضعیت فروش"
+          configured={isAiConfigured()}
+          suggestions={[
+            "وضعیت کلی فروش را در سه جمله خلاصه کن",
+            "بزرگ‌ترین ریسک این هفته چیست؟",
+            "چه اقدامی بیشترین اثر روی سود دارد؟",
+          ]}
+        />
+
+        <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
+          <Panel>
+            <PanelHeader
+              title="توزیع دمای مشتریان"
+              subtitle={`${bandTotal.toLocaleString("fa-IR")} مشتری ارزیابی‌شده`}
+            />
+            <div className="rule mx-5" />
+            <div className="flex flex-col gap-3 px-5 py-4">
+              {(["veryHot", "hot", "warm", "cold"] as BandKey[]).map((band) => {
+                const value = kpis.bandCounts[band] ?? 0;
+                return (
+                  <div key={band}>
+                    <div className="mb-1 flex items-baseline justify-between">
+                      <span className="text-[12px] text-ink-soft">{BAND_LABELS[band]}</span>
+                      <span className="tnum text-[12px] text-ink-faint">
+                        {value.toLocaleString("fa-IR")}
+                      </span>
+                    </div>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-surface-2">
+                      <div
+                        className={cn("h-full rounded-full", BAND_TONE[band])}
+                        style={{ width: `${Math.max(2, (value / bandTotal) * 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="rule mx-5" />
+            <div className="grid grid-cols-2 gap-px bg-line">
+              <div className="bg-surface px-5 py-3">
+                <p className="text-[11px] text-ink-faint">سود ناخالص واقعی</p>
+                <p className="tnum mt-1 text-[16px] font-medium text-ink">
+                  {formatMoney(kpis.profit, { compact: true })}
+                </p>
+                <p className="tnum mt-0.5 text-[11px] text-moss">
+                  حاشیه{" "}
+                  {kpis.marginPercent.toNumber().toLocaleString("fa-IR", { maximumFractionDigits: 1 })}
+                  ٪
+                </p>
+              </div>
+              <div className="bg-surface px-5 py-3">
+                <p className="text-[11px] text-ink-faint">سفارش‌های تأخیرخورده</p>
+                <p className="tnum mt-1 text-[16px] font-medium text-clay">
+                  {kpis.overdue.toLocaleString("fa-IR")}
+                </p>
+                <p className="mt-0.5 text-[11px] text-ink-faint">
+                  {kpis.learning.toLocaleString("fa-IR")} در حال یادگیری
+                </p>
+              </div>
+            </div>
+          </Panel>
+
+          <Panel>
+            <PanelHeader
+              title="در آستانهٔ سررسید"
+              subtitle="مشتریانی که موعد خریدشان گذشته"
+              action={
+                <Link href="/cartable" className="text-[12px] font-medium text-turquoise hover:underline">
+                  کارتابل
+                </Link>
+              }
+            />
+            <div className="rule mx-5" />
+            {overdueCycles.length === 0 ? (
+              <EmptyState title="هیچ سفارش تأخیرخورده‌ای نیست" />
+            ) : (
+              <ul className="divide-y divide-line">
+                {overdueCycles.map((cycle) => (
+                  <li key={cycle.id} className="flex items-center gap-3 px-5 py-3">
+                    <div className="min-w-0 flex-1">
+                      <Link
+                        href={`/companies/${cycle.customerId}`}
+                        className="truncate text-[13px] text-ink hover:text-turquoise"
+                      >
+                        {cycle.customer.name}
+                      </Link>
+                      <p className="truncate text-[11.5px] text-ink-faint">{cycle.product.name}</p>
+                    </div>
+                    <span className="tnum shrink-0 text-[11.5px] text-clay">
+                      {formatDate(cycle.expectedDate, "d MMM")}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Panel>
+        </div>
 
         <div className="grid gap-5 lg:grid-cols-[1.35fr_1fr]">
           {/* ------------------------------------------------ pipeline */}

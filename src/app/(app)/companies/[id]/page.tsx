@@ -19,6 +19,8 @@ import { Panel, PanelHeader, EmptyState } from "@/components/ui/panel";
 import { Badge } from "@/components/ui/badge";
 import { Avatar } from "@/components/ui/avatar";
 import { TemperatureForm } from "@/components/features/temperature-form";
+import { AiInsight } from "@/components/features/ai-insight";
+import { isAiConfigured } from "@/server/ai/provider";
 import { formatMoney, sum } from "@/lib/money";
 import { formatDate, isOverdue } from "@/lib/date";
 import { BAND_LABEL_FA } from "@/lib/temperature";
@@ -99,6 +101,18 @@ export default async function CustomerPage({ params }: { params: Promise<{ id: s
       />
 
       <PageBody className="flex flex-col gap-5">
+        <AiInsight
+          scope="customer"
+          entityId={customer.id}
+          title="تحلیل این مشتری"
+          configured={isAiConfigured()}
+          suggestions={[
+            "وضعیت این مشتری را تحلیل کن و بگو اول چه کاری لازم است",
+            "چطور می‌توانم این مشتری را از رقیب بگیرم؟",
+            "پیش‌بینی خرید بعدی و مقدار پیشنهادی چقدر است؟",
+          ]}
+        />
+
         {/* warning strip */}
         {customer.profile && !customer.profile.contactAllowed ? (
           <div className="flex items-start gap-2.5 rounded-[10px] border border-clay/30 bg-clay-soft px-4 py-3">
