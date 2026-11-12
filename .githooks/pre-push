@@ -26,7 +26,14 @@ if git diff --quiet -- graphify-out && git diff --cached --quiet -- graphify-out
 fi
 
 git add graphify-out
-git commit -q -m "chore(graph): sync knowledge graph before push" --no-verify || true
+if ! git commit -q -m "chore(graph): sync knowledge graph before push" --no-verify; then
+  echo ""
+  echo "✗ نقشهٔ دانش به‌روز شد ولی کامیت نشد."
+  echo "  بررسی کن: git config user.name / git config user.email"
+  echo "  سپس دوباره push کن."
+  echo ""
+  exit 1
+fi
 
 echo ""
 echo "✓ نقشهٔ دانش به‌روز و کامیت شد — push را دوباره اجرا کن."
