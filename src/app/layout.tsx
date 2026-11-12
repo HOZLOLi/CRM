@@ -11,14 +11,6 @@ const vazirmatn = localFont({
   fallback: ["system-ui", "sans-serif"],
 });
 
-const estedad = localFont({
-  src: "../../public/fonts/Estedad-var.woff2",
-  variable: "--font-estedad",
-  weight: "100 900",
-  display: "swap",
-  fallback: ["system-ui", "sans-serif"],
-});
-
 export const metadata: Metadata = {
   title: { default: "فیروزه — مدیریت ارتباط با مشتری", template: "%s · فیروزه" },
   description:
@@ -60,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${vazirmatn.variable} ${estedad.variable}`}>
+      <body className={vazirmatn.variable}>
         {children}
         <ServiceWorkerRegistrar />
       </body>

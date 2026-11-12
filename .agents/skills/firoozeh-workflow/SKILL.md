@@ -138,6 +138,16 @@ graphify-out/         ← نقشهٔ دانش کدبیس
 8. **seed** — `prisma/seed.ts` چند رکورد نمونهٔ فارسی اضافه کن
 9. **تست** — اگر منطق مالی دارد، در `src/lib/money.test.ts` یا فایل تست جدید
 
+## دستور پخت ۰ — افزودن هوش مصنوعی به یک ماژول
+
+هیچ ماژولی بدون نقطهٔ ورود AI تحویل نمی‌شود.
+
+1. در `src/server/ai/provider.ts` یک builder context اضافه کن
+   (`buildCustomerContext`, `buildCartableContext`, …)
+2. در `src/server/ai/scopes.ts` دامنه را ثبت کن (scope → context + system prompt)
+3. در صفحه: `<AiInsight scope="…" entityId={…} title="…" />`
+4. تست: با `.env` بدون کلید، دکمه باید غیرفعال باشد نه خطا بدهد
+
 ## دستور پخت ۳ — افزودن یک قابلیت هوش مصنوعی
 
 1. تابع در `src/server/ai/provider.ts` (مثلاً `buildXxxContext()`)

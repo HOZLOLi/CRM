@@ -9,7 +9,8 @@
 
 @theme {
   --font-sans: var(--font-vazirmatn), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-estedad), var(--font-vazirmatn), ui-sans-serif, sans-serif;
+  /* Vazir (Vazirmatn) is the single family for the whole product. */
+  --font-display: var(--font-vazirmatn), ui-sans-serif, system-ui, sans-serif;
 
   --color-paper: var(--paper);
   --color-surface: var(--surface);

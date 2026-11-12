@@ -1,5 +1,5 @@
 {
-  "0": "cn",
+  "0": "tasks-view.tsx",
   "1": "auth.ts",
   "2": "guard",
   "3": "PageHeader",
@@ -12,7 +12,7 @@
   "10": "crm",
   "11": "compilerOptions",
   "12": "scripts",
-  "13": "tailwind-merge",
+  "13": "@dnd-kit/utilities@^3.2.2",
   "14": "check-env.mjs",
   "15": "vitest",
   "16": "next.config.mjs",
@@ -20,13 +20,17 @@
   "18": "app/layout.tsx",
   "19": "pre-push",
   "20": "pre-commit",
-  "21": "jose",
-  "22": "ai",
+  "21": "package.json",
+  "22": "cn",
   "23": "sw.js",
   "24": "postcss.config.mjs",
   "25": "install-autostart.ps1",
   "26": "install-backup-task.ps1",
   "27": "@dnd-kit/sortable@^10.0.0",
-  "28": "recharts@^3.10.1",
-  "29": "date-fns@^4.4.0"
+  "28": "bcryptjs",
+  "29": "date-fns-jalali",
+  "30": "@dnd-kit/core",
+  "31": "prisma@^6.19.3",
+  "32": "react-dom@^19.3.1",
+  "33": "tailwind-merge"
 }

@@ -56,14 +56,20 @@ description: The visual language of فیروزه (Firoozeh CRM) — exact color 
 
 ## تایپوگرافی
 
-| نقش | خانواده | تعریف |
-|---|---|---|
-| تیتر (`h1`–`h4`) | `font-display` → Estedad | `src/app/globals.css` |
-| متن و رابط | `font-sans` → Vazirmatn | همان |
-| اعداد و مبالغ | Vazirmatn + `font-variant-numeric: tabular-nums` | کلاس `.tnum` |
+**یک خانواده: وزیر (Vazirmatn).** تیتر، متن، عدد، دکمه — همه با وزیر.
+`--font-sans` و `--font-display` هر دو به `--font-vazirmatn` اشاره می‌کنند.
 
-فونت‌ها **محلی** هستند: `public/fonts/*.woff2`. هرگز از CDN یا Google Fonts
-استفاده نکن — سرور مغازه ممکن است اینترنت نداشته باشد.
+تفکیک تیتر از متن با **وزن و اندازه** انجام می‌شود، نه با خانوادهٔ دیگر.
+وزن تیتر ۶۰۰، متن ۴۰۰، برچسب ۵۰۰.
+
+| نقش | کلاس | تعریف |
+|---|---|---|
+| تیتر | `font-display` | همان وزیر، وزن ۶۰۰ |
+| متن | `font-sans` | وزیر ۴۰۰ |
+| عدد و مبلغ | `.tnum` | `font-variant-numeric: tabular-nums` |
+
+فونت **محلی** است: `public/fonts/Vazirmatn-var.woff2`. هرگز از CDN یا Google
+Fonts استفاده نکن — سرور مغازه ممکن است اینترنت نداشته باشد.
 
 مقیاس اندازه‌ها (px):
 
@@ -120,6 +126,7 @@ description: The visual language of فیروزه (Firoozeh CRM) — exact color 
 | `Input` `Textarea` `Select` `Field` | `input.tsx` | ارتفاع ۴۴px موبایل / ۴۰ دسکتاپ؛ فونت ۱۶px موبایل (**الزامی** تا iOS زوم نکند) |
 | `Badge` | `badge.tsx` | `tone`: neutral / turquoise / saffron / clay / moss |
 | `Panel` `PanelHeader` `EmptyState` | `panel.tsx` | پنل = `bg-surface + border + radius-lg`، بدون سایه |
+| `AiInsight` | `features/ai-insight.tsx` | دکمهٔ «تحلیل با هوش مصنوعی» + پنل پاسخ استریمی — در **هر** ماژول استفاده شود |
 | `Stat` `StatGrid` | `stat.tsx` | `StatGrid` با `gap-px` و `bg-line` خطوط جداکننده می‌سازد؛ هر `Stat` باید `bg-surface` داشته باشد |
 | `Avatar` | `avatar.tsx` | رنگ از `oklch(...)` با `hue` کاربر — هیچ رنگ ثابتی |
 | `Skeleton` | `skeleton.tsx` | — |
@@ -145,6 +152,20 @@ description: The visual language of فیروزه (Firoozeh CRM) — exact color 
 
 همیشه `EmptyState` با یک آیکون خطی، یک جملهٔ روشن، و اگر ممکن است یک اقدام.
 متن خالی **دعوت به عمل** است، نه عذرخواهی.
+
+## هوش مصنوعی در هر ماژول (اجباری)
+
+هر صفحهٔ ماژول باید یک نقطهٔ ورود هوش مصنوعی داشته باشد. الگوی واحد:
+
+```tsx
+<AiInsight scope="customers" entityId={id} title="تحلیل این مشتری" />
+```
+
+- `scope` یکی از: `customers` `orders` `temperature` `cartable` `dashboard` `settings` `products`
+- دکمه در `PageHeader` (سمت اقدام‌ها) یا بالای پنل مربوطه
+- پاسخ **استریمی** در یک پنل `bg-surface` با همان تایپوگرافی — نه مدال، نه پنجرهٔ شناور
+- اگر AI پیکربندی نشده باشد، دکمه غیرفعال با راهنمای `.env`
+- هیچ‌گاه داده به بیرون نرود مگر از طریق `AI_BASE_URL` تنظیم‌شده
 
 ## RTL
 

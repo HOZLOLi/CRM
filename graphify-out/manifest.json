@@ -216,10 +216,10 @@
     "semantic_hash": "86e68af2f2c45170f548b6d1cfd5d2e3"
   },
   "src/app/layout.tsx": {
-    "mtime": 1794470354.7242463,
-    "seen": 1794471145.0054061,
-    "ast_hash": "0fd23278986540528ba3f8664cdc7cf4",
-    "semantic_hash": "0fd23278986540528ba3f8664cdc7cf4"
+    "mtime": 1794472470.3712707,
+    "seen": 1794472516.4502943,
+    "ast_hash": "03af854cfc3cf785387e74bfc2065f82",
+    "semantic_hash": ""
   },
   "src/app/login/page.tsx": {
     "mtime": 1794467038.4183877,
@@ -438,15 +438,15 @@
     "semantic_hash": ""
   },
   ".agents/skills/firoozeh-design/SKILL.md": {
-    "mtime": 1794471241.3159654,
-    "seen": 1794471437.1601014,
-    "ast_hash": "da709849afaa4b393c1b0b1e701083db",
+    "mtime": 1794472486.7660515,
+    "seen": 1794472516.4502943,
+    "ast_hash": "13c35a5811296f8721415322aba0b033",
     "semantic_hash": ""
   },
   ".agents/skills/firoozeh-workflow/SKILL.md": {
-    "mtime": 1794471659.9870772,
-    "seen": 1794471695.435871,
-    "ast_hash": "6e9225e9f9455477895598dde67a20f9",
+    "mtime": 1794472486.766899,
+    "seen": 1794472516.4502943,
+    "ast_hash": "d3979274f30162134282214e7600ac78",
     "semantic_hash": ""
   },
   ".agents/skills/frontend-design/LICENSE.txt": {
@@ -486,15 +486,15 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1794471659.986564,
-    "seen": 1794471695.435871,
-    "ast_hash": "c95fddd49f942e142b9d29f112566f49",
+    "mtime": 1794472486.766899,
+    "seen": 1794472516.4502943,
+    "ast_hash": "f5243b7d01bb3daf47cac02a67d3e3e1",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794471659.9881124,
-    "seen": 1794471695.435871,
-    "ast_hash": "be83cf3bcc3cd142a03a8fa063badf08",
+    "mtime": 1794472099.1375303,
+    "seen": 1794472516.4502943,
+    "ast_hash": "6ad328cb55443a49b4e9f8a7b87802a7",
     "semantic_hash": ""
   },
   "docs/CONCEPT.md": {
@@ -549,6 +549,12 @@
     "mtime": 1794468201.69373,
     "seen": 1794471902.6922717,
     "ast_hash": "36bfb806dc0e2c274292dfaae5be6577",
+    "semantic_hash": ""
+  },
+  "docs/BACKLOG.md": {
+    "mtime": 1794472082.3026721,
+    "seen": 1794472516.4502943,
+    "ast_hash": "cb2daf319234601a77cf8396f4e3e3d4",
     "semantic_hash": ""
   },
   "package-lock.json": {
