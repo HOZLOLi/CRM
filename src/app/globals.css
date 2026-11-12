@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   CRM — Design system
+   Direction: "فیروزه و زعفران" — Persian turquoise glaze and saffron on a cool
+   mist paper. Structural, not decorative: hairlines instead of shadows, tabular
+   numerals for every figure, one accent used sparingly.
+   ========================================================================= */
+
+@theme {
+  --font-sans: var(--font-vazirmatn), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-estedad), var(--font-vazirmatn), ui-sans-serif, sans-serif;
+
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-turquoise: var(--turquoise);
+  --color-turquoise-soft: var(--turquoise-soft);
+  --color-saffron: var(--saffron);
+  --color-saffron-soft: var(--saffron-soft);
+  --color-clay: var(--clay);
+  --color-clay-soft: var(--clay-soft);
+  --color-moss: var(--moss);
+  --color-moss-soft: var(--moss-soft);
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+:root {
+  --paper: #f2f5f3;
+  --surface: #ffffff;
+  --surface-2: #f8faf9;
+  --ink: #0f1a18;
+  --ink-soft: #4b5b57;
+  --ink-faint: #8b9a96;
+  --line: #dde4e1;
+  --line-strong: #c6d1cd;
+  --turquoise: #0b6e6b;
+  --turquoise-soft: #e2efed;
+  --saffron: #b96f10;
+  --saffron-soft: #fbf0dd;
+  --clay: #a63a32;
+  --clay-soft: #f8e8e6;
+  --moss: #4a6b3a;
+  --moss-soft: #eaf0e4;
+
+  --shadow-pop: 0 1px 2px rgb(15 26 24 / 0.06), 0 8px 24px -8px rgb(15 26 24 / 0.14);
+  --shadow-sheet: 0 24px 64px -24px rgb(15 26 24 / 0.28);
+
+  --dur-1: 120ms;
+  --dur-2: 180ms;
+  --dur-3: 240ms;
+  --dur-4: 320ms;
+}
+
+.dark {
+  --paper: #0b1211;
+  --surface: #121b19;
+  --surface-2: #16211f;
+  --ink: #e9f0ed;
+  --ink-soft: #a3b3ae;
+  --ink-faint: #6d7d78;
+  --line: #22302c;
+  --line-strong: #2f403b;
+  --turquoise: #45c2b8;
+  --turquoise-soft: #10312e;
+  --saffron: #e0a24a;
+  --saffron-soft: #33260f;
+  --clay: #e07a70;
+  --clay-soft: #3a1c19;
+  --moss: #8fbb72;
+  --moss-soft: #1e2a17;
+
+  --shadow-pop: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -8px rgb(0 0 0 / 0.6);
+  --shadow-sheet: 0 24px 64px -24px rgb(0 0 0 / 0.8);
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01" 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Every figure in this product is a number that must line up in a column. */
+  .tnum,
+  table,
+  input[type="number"],
+  .money {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  ::selection {
+    background: var(--turquoise-soft);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--turquoise);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.011em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Thin, quiet scrollbars — the data is the subject, not the chrome. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border-radius: 99px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  /* Hairline rule used as a structural device throughout the app. */
+  .rule {
+    height: 1px;
+    background: var(--line);
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+
+  .panel-flat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+
+  /* The one place we allow a soft glow: the active nav item. */
+  .nav-active {
+    background: var(--turquoise-soft);
+    color: var(--turquoise);
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--surface-2) 0%,
+      var(--line) 50%,
+      var(--surface-2) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s var(--ease-in-out-soft) infinite;
+    border-radius: var(--radius-sm);
+  }
+
+  .grid-paper {
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at 50% 0%, black 20%, transparent 75%);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* One orchestrated entrance for the app shell, not a fade-up on every card. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-rise {
+  animation: rise var(--dur-4) var(--ease-out-expo) both;
+}
+.animate-fade {
+  animation: fade var(--dur-3) var(--ease-out-quart) both;
+}
+.animate-scale-in {
+  animation: scale-in var(--dur-2) var(--ease-out-expo) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
