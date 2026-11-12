@@ -450,6 +450,8 @@ model FollowUpTask {
   inputs           String?
   suggestedMessage String?
   status           String    @default("open") // open | done | skipped | blocked
+  /** دلیل عدم خرید — price | quality | settlement | hasStock | competitor | other */
+  objection        String?
   attempts         Int       @default(0)
   assigneeId       String?
   source           String    @default("cartable") // cartable | spacing | manual

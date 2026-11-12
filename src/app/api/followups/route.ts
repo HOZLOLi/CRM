@@ -13,6 +13,7 @@ const schema = z.object({
   priority: z.enum(["P1", "P2", "P3"]).optional(),
   reason: z.string().optional(),
   suggestedMessage: z.string().optional(),
+  objection: z.enum(["price", "quality", "settlement", "hasStock", "competitor", "other"]).optional(),
 });
 
 export async function POST(request: Request) {
@@ -42,6 +43,7 @@ export async function POST(request: Request) {
           data: {
             status: body.action === "done" ? "done" : "skipped",
             completedAt: new Date(),
+            objection: body.objection ?? null,
           },
         });
       } else {

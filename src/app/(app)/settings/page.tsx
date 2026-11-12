@@ -8,6 +8,7 @@ import { MODULES } from "@/modules/registry";
 import { isAiConfigured, getModelId } from "@/server/ai/provider";
 import { getSettings } from "@/server/settings";
 import { SettingsEditor } from "@/components/features/settings-editor";
+import { AiInsight } from "@/components/features/ai-insight";
 import { formatDate } from "@/lib/date";
 
 export const metadata = { title: "تنظیمات" };
@@ -96,6 +97,17 @@ export default async function SettingsPage() {
             وزن‌ها، آستانه‌ها، ماتریس تصمیم و متن‌ها همه از همین‌جا کنترل می‌شوند.
             تغییرات بلافاصله در کارتابل و ارزیابی مشتریان اثر می‌گذارد.
           </p>
+          <AiInsight
+            scope="settings"
+            title="راهنمای تنظیمات"
+            configured={aiReady}
+            suggestions={[
+              "این وزن‌ها چه اثری روی کارتابل می‌گذارند؟",
+              "اگر آستانهٔ «داغ» را از ۷۴ به ۶۵ کم کنم چه می‌شود؟",
+              "پیشنهاد می‌کنی چه چیزی را در ماتریس تغییر دهم؟",
+            ]}
+            className="mb-4"
+          />
           <SettingsEditor initial={settings} />
         </div>
 

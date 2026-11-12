@@ -102,17 +102,27 @@ function daysLabel(days: number | null): { text: string; tone: string } {
   return { text: `${days.toLocaleString("fa-IR")} روز دیگر`, tone: "text-ink-soft" };
 }
 
+const OBJECTIONS = [
+  { key: "price", label: "قیمت" },
+  { key: "quality", label: "کیفیت" },
+  { key: "settlement", label: "شرایط تسویه" },
+  { key: "hasStock", label: "موجودی دارد" },
+  { key: "competitor", label: "رقیب" },
+  { key: "other", label: "سایر" },
+] as const;
+
 function Card({
   card,
   onAction,
   busy,
 }: {
   card: CartableCardData;
-  onAction: (action: "done" | "attempt" | "skip") => void;
+  onAction: (action: "done" | "attempt" | "skip", objection?: string) => void;
   busy: boolean;
 }) {
   const [copied, setCopied] = React.useState(false);
   const [showReasons, setShowReasons] = React.useState(false);
+  const [skipping, setSkipping] = React.useState(false);
 
   const band = BAND_STYLE[card.band] ?? BAND_STYLE.cold;
   const BandIcon = band.icon;
@@ -279,13 +289,39 @@ function Card({
           size="sm"
           variant="ghost"
           className="ms-auto"
-          onClick={() => onAction("skip")}
+          onClick={() => setSkipping((v) => !v)}
           disabled={busy}
         >
           <X size={13} />
           رد کردن
         </Button>
       </div>
+
+      <AnimatePresence initial={false}>
+        {skipping ? (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: EASE }}
+            className="overflow-hidden border-t border-line bg-surface-2/50"
+          >
+            <div className="flex flex-wrap items-center gap-1.5 px-4 py-2.5">
+              <span className="text-[11px] text-ink-faint">دلیل عدم خرید:</span>
+              {OBJECTIONS.map((objection) => (
+                <button
+                  key={objection.key}
+                  onClick={() => onAction("skip", objection.key)}
+                  disabled={busy}
+                  className="rounded-full border border-line bg-surface px-2 py-0.5 text-[11px] text-ink-soft transition-colors hover:border-clay hover:text-clay"
+                >
+                  {objection.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </motion.article>
   );
 }
@@ -328,7 +364,7 @@ export function Cartable({ initial }: { initial: CartableCardData[] }) {
     overdue: cards.filter((c) => (c.daysUntil ?? 1) <= 0).length,
   };
 
-  async function act(card: CartableCardData, action: "done" | "attempt" | "skip") {
+  async function act(card: CartableCardData, action: "done" | "attempt" | "skip", objection?: string) {
     setBusyId(card.customerId);
     try {
       const res = await fetch("/api/followups", {
@@ -342,6 +378,7 @@ export function Cartable({ initial }: { initial: CartableCardData[] }) {
           priority: card.priority,
           reason: card.reasons[0],
           suggestedMessage: card.suggestedMessage,
+          objection,
         }),
       });
 
@@ -406,7 +443,7 @@ export function Cartable({ initial }: { initial: CartableCardData[] }) {
                 key={card.customerId}
                 card={card}
                 busy={busyId === card.customerId}
-                onAction={(action) => act(card, action)}
+                onAction={(action, objection) => act(card, action, objection)}
               />
             ))}
           </AnimatePresence>

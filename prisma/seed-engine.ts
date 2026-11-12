@@ -173,6 +173,25 @@ export async function seedSalesEngine({ db, companies, products, users }: Contex
     });
   }
 
+  console.log("→ دلایل عدم خرید (نمونه)…");
+  const objections = ["price", "quality", "settlement", "hasStock", "competitor", "other"];
+  for (let i = 0; i < companies.length; i++) {
+    await db.followUpTask.create({
+      data: {
+        customerId: companies[i].id,
+        dueDate: new Date(now - (i + 2) * DAY),
+        stage: 5,
+        channel: "whatsapp",
+        priority: "P3",
+        reason: "پیگیری بررسی موجودی",
+        status: "skipped",
+        objection: objections[i % objections.length],
+        completedAt: new Date(now - (i + 1) * DAY),
+        assigneeId: i % 2 === 0 ? users.managerId : users.repId,
+      },
+    });
+  }
+
   console.log("→ چرخه‌های خرید…");
   for (const company of companies) {
     const orders = await db.order.findMany({

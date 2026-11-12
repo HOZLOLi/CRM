@@ -4,6 +4,7 @@ import { Cartable } from "@/components/features/cartable";
 import { buildCartable } from "@/server/sales-engine";
 import { isAiConfigured } from "@/server/ai/provider";
 import { AiInsight } from "@/components/features/ai-insight";
+import { SpacingButton } from "@/components/features/spacing-button";
 
 export const metadata = { title: "کارتابل امروز" };
 export const dynamic = "force-dynamic";
@@ -26,6 +27,7 @@ export default async function CartablePage() {
                 p1 ? ` · ${p1.toLocaleString("fa-IR")} مورد اولویت ۱` : ""
               }${overdue ? ` · ${overdue.toLocaleString("fa-IR")} مورد تأخیر` : ""}`
         }
+        actions={<SpacingButton />}
       />
       <PageBody className="flex flex-col gap-5">
         <AiInsight
