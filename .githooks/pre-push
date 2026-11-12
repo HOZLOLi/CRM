@@ -1,0 +1,34 @@
+#!/bin/sh
+# فیروزه — تضمین تازگی نقشهٔ دانش پیش از push
+#
+# روش: به‌جای مقایسهٔ هش کامیت (که همیشه یک قدم عقب است چون گراف قبل از
+# ساخته‌شدن کامیت به‌روز می‌شود)، خودِ گراف را دوباره می‌سازیم و می‌بینیم
+# آیا چیزی تغییر می‌کند. این تنها آزمون واقعی تازگی است.
+#
+# اگر گراف تغییر کند: کامیت می‌شود و push متوقف می‌شود تا با اجرای بعدی برود.
+
+if ! command -v graphify >/dev/null 2>&1; then
+  echo "  ⚠ graphify نصب نیست — نقشهٔ دانش بررسی نشد"
+  exit 0
+fi
+
+[ -f graphify-out/graph.json ] || exit 0
+
+echo "→ بررسی تازگی نقشهٔ دانش…"
+if ! graphify update . >/tmp/graphify-push.log 2>&1; then
+  echo "  ⚠ graphify update ناموفق بود — push ادامه می‌یابد (/tmp/graphify-push.log)"
+  exit 0
+fi
+
+if git diff --quiet -- graphify-out && git diff --cached --quiet -- graphify-out; then
+  echo "  ✓ نقشهٔ دانش تازه است"
+  exit 0
+fi
+
+git add graphify-out
+git commit -q -m "chore(graph): sync knowledge graph before push" --no-verify || true
+
+echo ""
+echo "✓ نقشهٔ دانش به‌روز و کامیت شد — push را دوباره اجرا کن."
+echo ""
+exit 1

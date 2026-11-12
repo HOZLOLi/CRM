@@ -143,7 +143,7 @@ graphify-out/         ← نقشهٔ دانش کدبیس
 | ۷ | **هیچ `ease-in`، هیچ `transition: all`.** |
 | ۸ | **ورودی‌ها `text-[16px]` روی موبایل.** |
 | ۹ | **بعد از هر تغییر: typecheck + test + build + commit + push.** |
-| ۱۰ | **بعد از تغییر ساختار کد: `graphify update .`** |
+| ۱۰ | **نقشهٔ دانش خودکار سینک می‌شود** — هوک‌ها انجامش می‌دهند |
 
 ## نقشهٔ دانش (graphify)
 
@@ -162,11 +162,20 @@ graphify update .                                   # به‌روزرسانی ب
 > **نکته:** شناسه‌های کد انگلیسی‌اند، پس پرسش را با **کلیدواژهٔ انگلیسی** بده
 > (`deal`, `money`, `auth`, `kanban`) نه فارسی. برای پرسش فارسی نتیجه‌ای برنمی‌گردد.
 
-**بعد از هر تغییر ساختاری** (فایل جدید، تابع جدید، حذف فایل):
+**به‌روزرسانی خودکار است.** هوک‌های `pre-commit` و `pre-push` گراف را سینک
+می‌کنند و در همان کامیت می‌گذارند. لازم نیست دستی کاری کنی.
+
+اگر روی ماشین جدیدی هستی:
 
 ```bash
-graphify update .
-git add graphify-out && git commit -m "chore(graph): update knowledge graph"
+npm install
+npm run hooks:install     # ← یک‌بار، واجب
+```
+
+فقط اگر graphify نصب نیست (`command -v graphify`)، دستی اجرا کن:
+
+```bash
+pip install graphifyy
 ```
 
 `GRAPH_REPORT.md` را بخوان — فهرست گره‌های اصلی و جوامع را دارد.
