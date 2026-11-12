@@ -9,7 +9,7 @@ const base =
 
 export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
   ({ className, ...props }, ref) => (
-    <input ref={ref} className={cn(base, "h-10 px-3 text-sm", className)} {...props} />
+    <input ref={ref} className={cn(base, "h-11 px-3 text-[16px] md:h-10 md:text-sm", className)} {...props} />
   ),
 );
 Input.displayName = "Input";
@@ -18,7 +18,7 @@ export const Textarea = React.forwardRef<
   HTMLTextAreaElement,
   React.TextareaHTMLAttributes<HTMLTextAreaElement>
 >(({ className, ...props }, ref) => (
-  <textarea ref={ref} className={cn(base, "min-h-24 px-3 py-2 text-sm leading-6", className)} {...props} />
+  <textarea ref={ref} className={cn(base, "min-h-24 px-3 py-2 text-[16px] leading-6 md:text-sm", className)} {...props} />
 ));
 Textarea.displayName = "Textarea";
 
@@ -26,7 +26,7 @@ export const Select = React.forwardRef<
   HTMLSelectElement,
   React.SelectHTMLAttributes<HTMLSelectElement>
 >(({ className, ...props }, ref) => (
-  <select ref={ref} className={cn(base, "h-10 px-3 text-sm appearance-none", className)} {...props} />
+  <select ref={ref} className={cn(base, "h-11 px-3 text-[16px] appearance-none md:h-10 md:text-sm", className)} {...props} />
 ));
 Select.displayName = "Select";
 

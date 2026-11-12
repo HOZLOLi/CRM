@@ -124,7 +124,7 @@ function NavItem({
       {active && (
         <motion.span
           layoutId="nav-marker"
-          className="absolute inset-y-1.5 -right-2 w-[2px] rounded-full bg-turquoise"
+          className="absolute inset-y-1.5 -right-1 w-[2px] rounded-full bg-turquoise"
           transition={{ duration: 0.24, ease: EASE }}
         />
       )}
@@ -224,7 +224,7 @@ export function AppShell({
         <header className="sticky top-0 z-30 flex h-14 items-center gap-2 border-b border-line bg-paper/85 px-3 backdrop-blur-md md:px-5">
           <button
             onClick={() => setDrawer(true)}
-            className="flex h-9 w-9 items-center justify-center rounded-[7px] text-ink-soft transition-colors hover:bg-surface-2 md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-[7px] text-ink-soft transition-colors hover:bg-surface-2 md:hidden"
             aria-label="باز کردن منو"
           >
             <Menu size={19} />
@@ -250,7 +250,7 @@ export function AppShell({
           <div className="mr-auto flex items-center gap-1">
             <button
               onClick={toggle}
-              className="flex h-9 w-9 items-center justify-center rounded-[7px] text-ink-soft transition-colors hover:bg-surface-2 hover:text-ink"
+              className="flex h-11 w-11 items-center justify-center rounded-[7px] text-ink-soft transition-colors hover:bg-surface-2 hover:text-ink md:h-9 md:w-9"
               aria-label={dark ? "حالت روشن" : "حالت تاریک"}
             >
               {dark ? <Sun size={17} /> : <Moon size={17} />}
