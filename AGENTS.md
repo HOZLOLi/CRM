@@ -7,6 +7,7 @@
 
 | ترتیب | فایل | چرا |
 |---|---|---|
+| ۰ | `docs/HANDOFF.md` | **اگر نشست قبلی بسته شده، این را اول بخوان** |
 | ۱ | `.agents/skills/firoozeh-workflow/SKILL.md` | نقشهٔ مخزن، دستورها، دستور پخت‌ها |
 | ۲ | `.agents/skills/firoozeh-design/SKILL.md` | **هر** تغییر ظاهری |
 | ۳ | `graphify-out/GRAPH_REPORT.md` | معماری بدون خواندن ۷۰ فایل |
