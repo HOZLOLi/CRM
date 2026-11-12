@@ -4,7 +4,7 @@
 #
 # ۱. typecheck
 # ۲. تست‌های واحد
-# ۳. به‌روزرسانی نقشهٔ دانش (graphify) اگر کد تغییر کرده باشد
+# ۳. به‌روزرسانی نقشهٔ دانش (graphify) و افزودن آن به همین کامیت
 #    → گراف همیشه با همان کامیت همگام است، پس هر push گراف تازه دارد.
 set -e
 
@@ -15,24 +15,19 @@ echo "→ tests…"
 npx vitest run --reporter=dot
 
 # --- نقشهٔ دانش -------------------------------------------------------------
-# فقط اگر فایل کدی در این کامیت باشد و graphify نصب باشد.
-CODE_CHANGED=$(git diff --cached --name-only \
-  | grep -E '^(src/|prisma/|scripts/|next\.config\.mjs|package\.json|vitest\.config\.mts)' \
-  | head -1 || true)
-
-if [ -n "$CODE_CHANGED" ]; then
-  if command -v graphify >/dev/null 2>&1; then
-    echo "→ graphify update (نقشهٔ دانش)…"
-    if graphify update . >/tmp/graphify-hook.log 2>&1; then
-      git add graphify-out 2>/dev/null || true
-      echo "  ✓ graphify-out به‌روز شد"
-    else
-      # گراف نباید مانع کار شود
-      echo "  ⚠ graphify update ناموفق بود (کامیت ادامه می‌یابد) — /tmp/graphify-hook.log"
-    fi
+# همیشه، نه فقط وقتی «کد» عوض شده: یک تغییر نام فایل یا یک فایل پیکربندی هم
+# گراف را کهنه می‌کند. هزینهٔ اجرای افزایشی چند ثانیه است.
+if command -v graphify >/dev/null 2>&1; then
+  echo "→ graphify update (نقشهٔ دانش)…"
+  if graphify update . >/tmp/graphify-hook.log 2>&1; then
+    git add graphify-out 2>/dev/null || true
+    echo "  ✓ graphify-out سینک شد"
   else
-    echo "  ⚠ graphify نصب نیست — نقشهٔ دانش به‌روز نشد"
+    # گراف هرگز نباید مانع کار شود
+    echo "  ⚠ graphify update ناموفق بود (کامیت ادامه می‌یابد) — /tmp/graphify-hook.log"
   fi
+else
+  echo "  ⚠ graphify نصب نیست — نقشهٔ دانش سینک نشد"
 fi
 
 echo "✓ checks passed"

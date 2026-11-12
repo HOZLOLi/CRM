@@ -426,9 +426,9 @@
     "semantic_hash": "72f00ed0241269485b03cd309f38e4d1"
   },
   ".githooks/pre-commit": {
-    "mtime": 1794471882.2362745,
-    "seen": 1794471902.691754,
-    "ast_hash": "658867296a75c800c2be0228ead0987f",
+    "mtime": 1794471928.3245053,
+    "seen": 1794471943.4786327,
+    "ast_hash": "05ada1817efb60da82dbb6dcf7de44d1",
     "semantic_hash": ""
   },
   ".agents/skills/find-skills/SKILL.md": {
