@@ -17,7 +17,7 @@ npx vitest run --reporter=dot
 # --- نقشهٔ دانش -------------------------------------------------------------
 # فقط اگر فایل کدی در این کامیت باشد و graphify نصب باشد.
 CODE_CHANGED=$(git diff --cached --name-only \
-  | grep -E '^(src/|prisma/|scripts/|next\.config\.mjs|package\.json|vitest\.config\.ts)' \
+  | grep -E '^(src/|prisma/|scripts/|next\.config\.mjs|package\.json|vitest\.config\.mts)' \
   | head -1 || true)
 
 if [ -n "$CODE_CHANGED" ]; then
